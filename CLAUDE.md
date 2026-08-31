@@ -14,7 +14,7 @@ dictionaries, nothing more.
 | Path | What |
 |---|---|
 | `dictionaries/wikdict/` | Placeholder only — the automated WikDict mirror publishes to this repo's [Releases](../../releases), not a git-tracked folder, to avoid bloating history with monthly binary re-uploads. See its own `README.md`. |
-| `dictionaries/manual/` | Dictionaries added by hand, one folder per dictionary, git-tracked (infrequent additions, unlike the monthly mirror, so no bloat concern here). **Naming convention and the license rule are in its own `README.md` — read that before adding anything.** |
+| `dictionaries/manual/` | Dictionaries added by hand, one folder per dictionary, git-tracked (infrequent additions, unlike the monthly mirror, so no bloat concern here). **Naming convention and the license rule are in its own `README.md` — read that before adding anything.** The app doesn't discover this folder — out of scope for now, not a bug. |
 | `sync.py`, `lingq_languages.py`, `languages.json` | The actual scripts behind the WikDict mirror, kept here (MIT) for transparency and reuse. **Not wired to any workflow in this repo** — see "Where the pipeline actually runs" below. |
 | `LICENSE` | MIT — covers the code in this repo only, not the dictionary data. |
 | `docs/` | Deeper design rationale that doesn't need to be in the README — why this repo exists, why the pipeline runs elsewhere, licensing detail per data source. |

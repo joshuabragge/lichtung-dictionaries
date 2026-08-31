@@ -54,9 +54,9 @@ dictionaries/manual/<source>-<target>-<slug>/
   confirmed permitted — required, not optional, given the license rule
   above.
 
-**Not built yet:** nothing in the Lichtung app currently discovers or
-downloads from `dictionaries/manual/` automatically the way it does for
-the WikDict mirror's Releases — a manually-added dictionary here is
-findable and downloadable by a human, but isn't wired into the app's
-"Browse Dictionaries" screen. That's a real gap, not a subtle one, if you
-add something here expecting the app to pick it up on its own.
+**Out of scope for now:** the Lichtung app doesn't discover or download
+from `dictionaries/manual/` at all — not a bug to fix, just not built.
+This folder is a place to put a dictionary for a human to find and import
+by hand today; wiring it into the app's "Browse Dictionaries" screen
+(its own manifest, a second catalog source alongside the WikDict one)
+would be a deliberate follow-on, not something assumed here.
