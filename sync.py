@@ -2,11 +2,12 @@
 """Mirror WikDict's CC BY-SA StarDict dictionaries into a local output
 directory, ready to be uploaded as GitHub Release assets.
 
-See README.md for the design and licensing rationale (WikDict's data is
-CC BY-SA -- explicitly redistributable with attribution, unlike dict.cc's
-personal-use-only terms, which is why this script exists only for
-WikDict). The consuming app's own design doc is
-joshuabragge/Web-Reader-for-LingQ's docs/wikdict-mirror-plan.md (private).
+See docs/why-separate-repo.md for the design and licensing rationale
+(WikDict's data is CC BY-SA -- explicitly redistributable with
+attribution, unlike dict.cc's personal-use-only terms, which is why this
+script exists only for WikDict). This script is a reference copy -- the
+version that actually runs on a schedule lives in Lichtung's private app
+repo (lichtung.xyz); see CLAUDE.md.
 
 Usage:
     python3 sync.py --out dist/wikdict [--all] [--languages languages.json]

@@ -1,5 +1,5 @@
 {
-  "_comment": "Fallback allowlist for sync.py, used only when lingq_languages.py can't fetch LingQ's live /api/v2/languages/ catalog (missing LINGQ_API_KEY, or the call failing) -- see mirror.yml and README.md. The real allowlist is fetched fresh every scheduled run; this file is a manually-reviewed snapshot so a LingQ-side outage degrades gracefully instead of failing the job.",
+  "_comment": "Fallback allowlist for sync.py, used only when lingq_languages.py can't fetch LingQ's live /api/v2/languages/ catalog (missing LINGQ_API_KEY, or the call failing) -- see CLAUDE.md. The real allowlist is fetched fresh every scheduled run by the workflow in Lichtung's private app repo; this file is a manually-reviewed snapshot so a LingQ-side outage degrades gracefully instead of failing the job.",
   "languages": [
     "en",
     "de",

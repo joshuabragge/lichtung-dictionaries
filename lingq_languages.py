@@ -8,11 +8,12 @@ GET /api/v2/languages/ (the same endpoint and tolerant parse shape as the
 Lichtung app's own Swift APIClient.getLanguages()/parseLanguages,
 reimplemented here since this script has no Swift runtime to call into).
 
-Run fresh on every scheduled mirror (see README.md) rather than caching/
+Run fresh on every scheduled mirror (see CLAUDE.md) rather than caching/
 committing the result back to the repo -- one API call per month costs
 nothing and means the allowlist can never go stale between runs.
-languages.json stays checked in as the fallback mirror.yml uses when
-LINGQ_API_KEY is unavailable (e.g. a local dry run) or the call fails.
+languages.json stays checked in as the fallback the real (privately-run)
+workflow uses when LINGQ_API_KEY is unavailable (e.g. a local dry run) or
+the call fails.
 
 Usage:
     LINGQ_API_KEY=... python3 lingq_languages.py --out languages.generated.json
