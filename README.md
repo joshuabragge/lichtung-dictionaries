@@ -5,17 +5,25 @@ Mirrored dictionary data for [Lichtung](https://github.com/joshuabragge/Web-Read
 vocabulary highlighting) and its standalone in-app ereader. Lichtung's own
 source is private; this repo exists only to host the one thing that
 *needs* to be public — the redistributable dictionary data its app
-downloads on demand — decoupled from the private app repo so the app never
-needs a credential that could also read Lichtung's source.
+downloads on demand.
+
+**This repo holds no secrets and runs no automation of its own.** The
+mirroring pipeline (fetching LingQ's current language list, then WikDict's
+data for those languages) runs from Lichtung's private repo, which is
+where the LingQ API credential that step needs actually lives — it stays
+there, never here. That job's last step pushes the finished result into
+this repo as a new Release, using a token scoped to *only* this one
+repo's contents, so nothing crossing that boundary can read anything back
+out of the private side. This repo is just where the output lands.
 
 ## What's here
 
-- **This repo's own code** (`sync.py`, `lingq_languages.py`,
-  `languages.json`, `.github/workflows/mirror.yml`): a small pipeline that
-  mirrors [WikDict](https://www.wikdict.com)'s StarDict-format bilingual
-  dictionaries, filtered to whatever languages
-  [LingQ](https://www.lingq.com) currently supports, and publishes the
-  result as a dated GitHub Release.
+- **`sync.py`, `lingq_languages.py`, `languages.json`**: the actual
+  scripts that produce each release, kept here (MIT-licensed) for
+  transparency and reuse — you can see exactly how a release was built,
+  or run this yourself against your own language list. They aren't
+  executed by anything in this repo; the private pipeline that actually
+  runs them on a schedule lives elsewhere (above).
 - **The dictionary data itself**, published only as [Release assets](../../releases) —
   never committed into this repo's git history. Each release has a
   `manifest.json` (pair list, file sizes, SHA-256 checksums) alongside the
@@ -25,9 +33,9 @@ needs a credential that could also read Lichtung's source.
 
 These are two separate things under two separate licenses:
 
-- **The code in this repo** (the sync scripts and workflow) is original
-  and licensed under [MIT](LICENSE) — free to reuse, including by anyone
-  wanting to mirror WikDict for their own project.
+- **The code in this repo** (the sync scripts) is original and licensed
+  under [MIT](LICENSE) — free to reuse, including by anyone wanting to
+  mirror WikDict for their own project.
 - **The dictionary data in each release** is **not** ours — it's WikDict's
   own [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
   data, sourced from Wiktionary via [DBnary](http://kaiko.getalp.org/about-dbnary/).
@@ -64,8 +72,4 @@ LINGQ_API_KEY=... python3 lingq_languages.py --out /tmp/languages.generated.json
 python3 sync.py --out dist/wikdict --languages /tmp/languages.generated.json
 ```
 
-`.github/workflows/mirror.yml` runs this on a monthly schedule (plus
-manual `workflow_dispatch`) and publishes the result as a
-`wikdict-mirror-YYYY-MM-DD` release. It needs one repo secret,
-`LINGQ_API_KEY`, to fetch the live language allowlist — falls back to the
-checked-in `languages.json` if that secret is missing or the call fails.
+Both scripts are stdlib-only Python — no dependencies to install.
