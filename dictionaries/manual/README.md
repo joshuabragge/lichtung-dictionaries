@@ -60,12 +60,3 @@ This folder is a place to put a dictionary for a human to find and import
 by hand today; wiring it into the app's "Browse Dictionaries" screen
 (its own manifest, a second catalog source alongside the WikDict one)
 would be a deliberate follow-on, not something assumed here.
-
-## Currently included
-
-Wiktionary-derived English-gloss dictionaries for languages WikDict has no
-headword dictionary for (each folder's `SOURCE.md` has the details and
-license, CC BY-SA 4.0): `af`, `ar`, `fa`, `he`, `id`, `is`, `ko`, `la`,
-`ro`, `sh` (Serbo-Croatian, for Serbian and Croatian), `uk`, `zh`
-(Traditional and Simplified headwords). Each folder also carries the
-`.syn`, `.css` and `res/` files the upstream archive ships.
