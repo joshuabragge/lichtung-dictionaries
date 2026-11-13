@@ -14,6 +14,7 @@ dictionaries, nothing more.
 | Path | What |
 |---|---|
 | `dictionaries/wikdict/` | Placeholder only — the automated WikDict mirror publishes to this repo's [Releases](../../releases), not a git-tracked folder, to avoid bloating history with monthly binary re-uploads. See its own `README.md`. |
+| `dictionaries/wiktionary/` | English Wiktionary extracts from one third-party source (xxyzz/wiktionary_stardict), git-tracked, one `<code>-en/` folder per language WikDict lacks. Source, CC BY-SA 4.0 license and per-archive checksums are recorded once in its `README.md`. Same rule as `manual/`: confirm the license before adding. |
 | `dictionaries/manual/` | Dictionaries added by hand, one folder per dictionary, git-tracked (infrequent additions, unlike the monthly mirror, so no bloat concern here). **Naming convention and the license rule are in its own `README.md` — read that before adding anything.** The app doesn't discover this folder — out of scope for now, not a bug. |
 | `sync.py`, `lingq_languages.py`, `languages.json` | The actual scripts behind the WikDict mirror, kept here (MIT) for transparency and reuse. **Not wired to any workflow in this repo** — see "Where the pipeline actually runs" below. |
 | `LICENSE` | MIT — covers the code in this repo only, not the dictionary data. |
@@ -39,7 +40,7 @@ here is for transparency/reuse only.
 - **Never commit dictionary data (zips, `.ifo`/`.idx`/`.dict` files) from
   the automated mirror into git.** It ships as Release assets only —
   `dictionaries/wikdict/` stays a placeholder.
-- **Manually-added dictionaries are the one exception** — small, one-time
+- **Manually-added dictionaries (`dictionaries/manual/`) and single-source extracts (`dictionaries/wiktionary/`) are the exception** — small, one-time
   additions are fine to commit directly under `dictionaries/manual/`,
   following its naming convention.
 - **Before adding any dictionary by hand, confirm its license actually
